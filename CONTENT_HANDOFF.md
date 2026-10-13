@@ -64,7 +64,7 @@ Existing Vercel project:
 - Production URL: `https://whispvfx.vercel.app/`
 - Framework: Other / static; root directory: repository root; output: `dist`; install and build commands: empty.
 
-Check the project's Git integration. If this repository is connected and `main` is its production branch, pushing `main` deploys through Vercel. Verify the resulting deployment rather than assuming it succeeded. See [Vercel Git integration](https://vercel.com/docs/cli/git).
+This repository was connected to the existing Vercel project on October 13, 2026, and `main` was verified as the production branch. Pushing `main` triggers deployment through Vercel. Check that the integration remains connected, then verify the resulting deployment rather than assuming it succeeded. See [Vercel Git integration](https://vercel.com/docs/cli/git).
 
 For direct deployment from a new checkout, authenticate to the existing Vercel account when needed, then link the existing project:
 
