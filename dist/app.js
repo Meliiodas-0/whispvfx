@@ -10,29 +10,56 @@ const projects = {
   veil: { title: 'Beyond the veil', category: 'Atmosphere / Visual development', image: 'assets/hero.webp', alt: 'A silver spirit moving through a dark ruined cathedral', description: 'A world caught between absence and presence. A spectral veil drifts through ruined architecture, leaving only light in its wake. This atmospheric direction uses scale, negative space, and a restrained palette to make the impossible feel close.', tags: ['Spectral atmosphere', 'Environmental storytelling', 'Silver & shadow'] }
 };
 const projectDialog = document.getElementById('project-dialog');
-let dialogTrigger = null;
-function openDialog(dialog, trigger = document.activeElement) { dialogTrigger = trigger; dialog.showModal(); }
+const dialogReturnFocus = new WeakMap();
+let currentProject = 'veil';
+const projectOrder = ['veil', 'soul', 'crimson'];
+function openDialog(dialog, trigger = document.activeElement) { dialogReturnFocus.set(dialog, trigger); dialog.showModal(); }
 document.querySelectorAll('dialog').forEach(dialog => {
   dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
-  dialog.addEventListener('close', () => { if (dialogTrigger?.isConnected) dialogTrigger.focus({ preventScroll: true }); });
+  dialog.addEventListener('close', () => { const trigger = dialogReturnFocus.get(dialog); dialogReturnFocus.delete(dialog); if (trigger?.isConnected) trigger.focus({ preventScroll: true }); });
 });
-document.querySelectorAll('.project').forEach(button => button.addEventListener('click', () => {
-  const project = projects[button.dataset.project];
+function displayProject(key) {
+  const project = projects[key];
+  if (!project) return;
+  currentProject = key;
+  projectDialog.dataset.realm = key;
   document.getElementById('project-title').textContent = project.title;
   document.getElementById('project-category').textContent = project.category;
   document.getElementById('project-description').textContent = project.description;
   const img = document.getElementById('project-detail-image'); img.src = project.image; img.alt = project.alt;
   document.getElementById('project-tags').replaceChildren(...project.tags.map(text => { const span = document.createElement('span'); span.textContent = text; return span; }));
+  document.getElementById('project-position').textContent = `${projectOrder.indexOf(key) + 1} / ${projectOrder.length}`;
+}
+document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => {
+  displayProject(button.dataset.project);
   openDialog(projectDialog, button);
 }));
-document.getElementById('project-inquire').addEventListener('click', () => { projectDialog.close(); });
+document.getElementById('previous-project').addEventListener('click', () => displayProject(projectOrder[(projectOrder.indexOf(currentProject) + projectOrder.length - 1) % projectOrder.length]));
+document.getElementById('next-project').addEventListener('click', () => displayProject(projectOrder[(projectOrder.indexOf(currentProject) + 1) % projectOrder.length]));
+document.getElementById('project-inquire').addEventListener('click', () => { dialogReturnFocus.delete(projectDialog); projectDialog.close(); });
 document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('.filter').forEach(filter => { const active = filter === button; filter.classList.toggle('active', active); filter.setAttribute('aria-pressed', String(active)); });
   let count = 0;
   document.querySelectorAll('.project').forEach(project => { project.hidden = button.dataset.filter !== 'all' && project.dataset.category !== button.dataset.filter; if (!project.hidden) count++; });
+  document.getElementById('gallery').classList.toggle('is-filtered', button.dataset.filter !== 'all');
   document.getElementById('project-count').textContent = `${count} ${count === 1 ? 'study' : 'studies'}`;
 }));
+
+const realmNames = { veil: 'The veil', soul: 'The soul', crimson: 'The ember' };
+document.querySelectorAll('[data-realm]').forEach(button => button.addEventListener('click', () => {
+  const realm = button.dataset.realm;
+  if (!projects[realm]) return;
+  document.body.dataset.realm = realm;
+  document.querySelector('.hero').dataset.currentRealm = realm;
+  document.querySelector('.hero-art').setAttribute('aria-label', projects[realm].alt);
+  document.querySelectorAll('.realm-choice').forEach(choice => { const selected = choice === button; choice.classList.toggle('active', selected); choice.setAttribute('aria-pressed', String(selected)); });
+  document.querySelectorAll('[data-scene]').forEach(scene => scene.classList.toggle('active', scene.dataset.scene === realm));
+  document.querySelector('.realm-open').dataset.project = realm;
+  document.getElementById('realm-status').textContent = `${realmNames[realm]} atmosphere selected.`;
+  window.dispatchEvent(new CustomEvent('whisp:realm-change', { detail: { realm } }));
+}));
+document.addEventListener('keydown', event => { if (event.key === 'Escape' && nav.classList.contains('open')) { nav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-label', 'Open navigation'); menuButton.focus(); } });
 
 const rawContact = window.WHISP_CONTACT || {};
 const contact = {
@@ -49,7 +76,7 @@ document.querySelectorAll('[data-contact]').forEach(link => {
     if (method !== 'email') { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
   } else { link.addEventListener('click', event => { event.preventDefault(); openDialog(contactDialog, link); }); }
 });
-document.getElementById('prepare-brief').addEventListener('click', () => { contactDialog.close(); document.getElementById('inquiry-form').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' }); document.querySelector('[name="name"]').focus({ preventScroll: true }); });
+document.getElementById('prepare-brief').addEventListener('click', () => { dialogReturnFocus.delete(contactDialog); contactDialog.close(); document.getElementById('inquiry-form').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' }); document.querySelector('[name="name"]').focus({ preventScroll: true }); });
 if (contact.email || contact.whatsapp) document.getElementById('form-note').textContent = 'Review your brief, then open your chosen app. Nothing is sent automatically.';
 const messageDialog = document.getElementById('message-dialog');
 document.getElementById('inquiry-form').addEventListener('submit', event => {

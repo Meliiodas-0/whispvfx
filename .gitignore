@@ -2,3 +2,12 @@
 *.tar.gz
 *.tar
 node_modules/
+.vercel/
+.openai/
+.env
+.env.*
+!.env.example
+incoming/
+source-media/
+
+.vercel

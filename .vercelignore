@@ -1,0 +1,12 @@
+.git
+.openai
+.sites-runtime
+README.md
+CONTENT_HANDOFF.md
+AGENTS.md
+incoming
+source-media
+.env*
+node_modules
+*.tar
+*.tar.gz
