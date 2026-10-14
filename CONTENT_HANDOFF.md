@@ -2,7 +2,15 @@
 
 ## Goal
 
-Replace the sample visual studies with WhispVFX's actual Unreal VFX renders, screenshots, and reels while retaining the existing immersive design. Commit and push the result, then publish to the existing public website at **https://whispvfx.vercel.app/**.
+Maintain WhispVFX's actual VFX renders and reels while retaining the existing immersive design. Commit and push updates, then verify the existing public website at **https://whispvfx.vercel.app/**.
+
+## Current content — October 14, 2026
+
+The artist approved publication of all 15 videos from their central VFX folder. Credit: **Whisp VFX studio**. They create VFX for Unreal Engine and Unity; every currently supplied video was rendered in Unreal Engine. Project titles are artist-approved descriptive names chosen from the visible effects and filenames. Do not invent clients, character/model credits, or additional production roles.
+
+The gallery now contains playable reels with WebP posters and smaller thumbnails in `dist/assets/reels/`. The three concept illustrations remain as labeled hero/studio atmosphere backgrounds, not gallery work. Hero realm links map through `realmProjects` to actual reels. Gallery layout repeats asymmetric pairs and wide cards; filtered layouts support multiple results.
+
+Web videos are H.264/yuv420p MP4 with fast-start metadata, capped at 1600 pixels wide without upscaling. Original framing, speed, frame rate, and duration are preserved. The supplied clips are silent, including captures with silent AAC tracks. Original captures and processing/QA files remain outside the repository; never replace the central final videos with these web copies.
 
 Repository: **https://github.com/Meliiodas-0/whispvfx**. Default branch: `main`.
 
@@ -21,10 +29,10 @@ Read `AGENTS.md` and this guide. Ask the user for the folder containing the actu
 
 | File | Purpose |
 | --- | --- |
-| `dist/assets/` | Optimized media served by the website. The current `hero.webp`, `soul.webp`, and `crimson.webp` are AI-generated illustrations. |
+| `dist/assets/` | Optimized media served by the website. `reels/` contains actual work; `hero.webp`, `soul.webp`, and `crimson.webp` are labeled AI atmosphere illustrations. |
 | `dist/app.js` | `projects` object: IDs, titles, categories, images, alt text, descriptions, and tags. `projectOrder` controls viewer navigation. |
 | `dist/index.html` | Gallery cards, filters/counts, hero realm choices, and project-dialog markup. `data-project` IDs must match the project object. |
-| `dist/immersive.css` | Realm backgrounds and swatches; asymmetric gallery layout. Some selectors specifically target the `crimson` ID. |
+| `dist/immersive.css` | Realm backgrounds and swatches; repeating asymmetric gallery layout, filtered grids, and responsive video viewer. |
 | `dist/atmosphere.js` | Particles, motion controls, and optional ambient sound. Preserve this behavior during content changes. |
 | `dist/studio-config.js` | Real ArtStation URL, email, and digits-only WhatsApp number including country code. |
 | `vercel.json` | Buildless static hosting, output directory `dist`. |
@@ -35,7 +43,7 @@ Update or remove sample wording such as "Selected visual studies", "Explore stud
 
 Copy and optimize media; preserve originals. Use useful posters/thumbnails and descriptive alt text. Keep page downloads light. For large reels, use the user's approved video host or storage rather than adding large raw captures to Git. Check current provider limits before uploading.
 
-**Video playback is not implemented in this snapshot.** The project viewer currently uses `<img id="project-detail-image">`. When adding reels, extend the project data with video/poster information and implement a corresponding `<video controls playsinline preload="metadata" poster="...">` in the viewer. Show the correct image or video for each project, pause and reset playback on close or project change, and check real playback plus audio on desktop and mobile. Do not imply that a still image is a playable reel. Keep keyboard focus, Escape, backdrop dismissal, and previous/next navigation working.
+**Video playback is implemented.** Project data includes `video` and `image` (poster) fields. The viewer uses `<video controls playsinline preload="metadata">` with an explicit play button and direct-reel fallback link. It attaches a source only on project open, then pauses, resets, and removes it on close or project change. Preserve this behavior and test real playback on desktop/mobile, including any audio supplied in future clips. Keep focus, Escape, backdrop dismissal, and previous/next navigation working.
 
 ## Preview and checks
 
@@ -50,6 +58,7 @@ Open `http://127.0.0.1:4173/`. Check the actual rendering at desktop and mobile 
 ```sh
 node --check dist/app.js
 node --check dist/atmosphere.js
+node scripts/verify-content.mjs
 ```
 
 ## GitHub and existing Vercel hosting
