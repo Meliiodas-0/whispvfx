@@ -8,9 +8,9 @@
     const soundButton = document.getElementById('sound-toggle');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const palettes = {
-      veil: '188, 213, 233',
-      soul: '161, 207, 249',
-      crimson: '236, 136, 112'
+      veil: '196, 139, 113',
+      soul: '143, 184, 216',
+      crimson: '226, 99, 75'
     };
     let color = palettes.veil;
     let motionEnabled = !reducedMotion.matches;

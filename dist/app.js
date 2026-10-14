@@ -353,7 +353,7 @@ document.querySelectorAll('.filter').forEach(button => button.addEventListener('
   gallery.classList.toggle('is-filtered', !selected);
   document.getElementById('collection-footer').hidden = button.dataset.filter === 'all';
   document.getElementById('project-count').textContent = `${count} ${selected ? 'selected ' : ''}${count === 1 ? 'reel' : 'reels'}`;
-  document.getElementById('gallery-top').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+  document.getElementById('gallery-top').scrollIntoView({ behavior: 'instant', block: 'start' });
 }));
 document.getElementById('show-all-projects').addEventListener('click', () => {
   const all = document.querySelector('[data-filter="all"]');
