@@ -2,7 +2,7 @@
 
 Read `CONTENT_HANDOFF.md` before updating portfolio content.
 
-- This is the existing WhispVFX website: plain HTML, CSS, and JavaScript in `dist/`. Preserve its immersive dark fantasy design unless the user requests a redesign.
+- This is the existing WhispVFX website: plain HTML, CSS, and JavaScript in `dist/`. Preserve the immersive hero. The lower page is an exhibition-style portfolio in `dist/curated.css`: six featured reels first, all 15 available through filters, a warm studio folio, and a direct contact section. Preserve that hierarchy unless the user requests a redesign.
 - Hosting is explicitly Vercel at `https://whispvfx.vercel.app/`, project `whispvfx`, scope `aayushs-projects-4c65c2a5`. Update that project; avoid creating a duplicate hosting project or publishing to the earlier Sites host.
 - The three hero atmosphere images are AI-generated concept illustrations, labeled as such. The gallery contains 15 user-approved Unreal Engine reels, credited to **Whisp VFX studio**. The studio also creates VFX for Unity. Describe only supplied actual renders/reels as studio VFX work. Use accurate project titles and credits; ask the user when needed.
 - Import optimized copies of the user's selected media. Preserve original captures, Unreal projects, and source assets on the content PC.

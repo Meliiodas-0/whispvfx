@@ -8,9 +8,11 @@ Maintain WhispVFX's actual VFX renders and reels while retaining the existing im
 
 The artist approved publication of all 15 videos from their central VFX folder. Credit: **Whisp VFX studio**. They create VFX for Unreal Engine and Unity; every currently supplied video was rendered in Unreal Engine. Project titles are artist-approved descriptive names chosen from the visible effects and filenames. Do not invent clients, character/model credits, or additional production roles.
 
-The gallery now contains playable reels with WebP posters and smaller thumbnails in `dist/assets/reels/`. The three concept illustrations remain as labeled hero/studio atmosphere backgrounds, not gallery work. Hero realm links map through `realmProjects` to actual reels. Gallery layout repeats asymmetric pairs and wide cards; filtered layouts support multiple results.
+The gallery contains playable reels with WebP posters and smaller thumbnails in `dist/assets/reels/`. The three concept illustrations remain as labeled hero atmosphere backgrounds, not gallery work. Hero realm links map through `realmProjects` to actual reels. The hero is preserved; the lower sections are styled in `dist/curated.css` after an artist-requested aesthetic curation pass.
 
-Gallery cards also play silent short previews from `dist/assets/previews/`, with a separate toggle. `dist/previews.js` loads sources only as cards enter view, limits playback to two visible cards, and pauses on filtering, dialogs, page hiding, or preview-toggle changes. Reduced-motion and data-saving preferences default to posters. `scripts/make-previews.py` regenerates previews from optimized web reels without changing originals.
+The default Selected filter presents six pieces: Scarlet Ascension as the lead, Spectral Serpent and Celestial Orbit as companion pieces, then Fourfold Frost, Arcane Convergence, and Violet Aegis. All 15 reels remain available through All work and category filters. The footer link expands the full collection. Filtering returns visitors to the gallery start. `data-featured` controls selection, and `projectOrder` still includes all 15 for viewer navigation. The studio folio uses an explicitly labeled detail from Crimson Hand Magic, with a button to the original full-frame reel.
+
+Gallery cards also play silent short previews from `dist/assets/previews/`, with a separate toggle. `dist/previews.js` loads sources only as cards enter view, limits playback to two visible cards, and pauses on filtering, dialogs, page hiding, or preview-toggle changes. Reduced-motion and data-saving preferences default to posters. `scripts/make-previews.py` regenerates previews from optimized web reels without changing originals. The lead preview is 1280 pixels wide, companion previews are 1000 pixels, and smaller previews are 800 pixels, totaling 6.44 MB. Thumbnail crops are presentation details; full reels preserve their original framing.
 
 WhatsApp is the default contact channel. The user supplied 9971355102, configured as `919971355102` with India's country code. The form does not request email on WhatsApp; selecting Email reveals and requires that field. No studio email address or ArtStation URL has been supplied. Email briefs remain copy/save drafts, and unconfigured direct contact links are hidden.
 
@@ -36,7 +38,8 @@ Read `AGENTS.md` and this guide. Ask the user for the folder containing the actu
 | `dist/assets/` | Optimized media served by the website. `reels/` contains actual work; `hero.webp`, `soul.webp`, and `crimson.webp` are labeled AI atmosphere illustrations. |
 | `dist/app.js` | `projects` object: IDs, titles, categories, images, alt text, descriptions, and tags. `projectOrder` controls viewer navigation. |
 | `dist/index.html` | Gallery cards, filters/counts, hero realm choices, and project-dialog markup. `data-project` IDs must match the project object. |
-| `dist/immersive.css` | Realm backgrounds and swatches; repeating asymmetric gallery layout, filtered grids, and responsive video viewer. |
+| `dist/immersive.css` | Hero realm backgrounds, swatches, atmosphere styling, and responsive video viewer. |
+| `dist/curated.css` | The curated collection, filtered grids, warm studio folio, contact composition, and footer. Lower-page rules override the earlier styling without changing the hero. |
 | `dist/atmosphere.js` | Particles, motion controls, and optional ambient sound. Preserve this behavior during content changes. |
 | `dist/previews.js` | Lazy, silent card previews and their playback lifecycle. |
 | `dist/studio-config.js` | Real ArtStation URL, email, and digits-only WhatsApp number including country code. |

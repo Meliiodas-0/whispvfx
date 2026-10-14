@@ -18,6 +18,7 @@ starts = {
     'rose-shatter': 0, 'ember-beam': 4, 'surface-impact': 10,
 }
 selected = set(sys.argv[1:])
+large_previews = {'scarlet-ascension': 1280, 'spectral-serpent': 1000, 'celestial-orbit': 1000}
 if selected - starts.keys():
     raise SystemExit('Unknown effect: ' + ', '.join(sorted(selected - starts.keys())))
 for source in sorted((root / 'dist' / 'assets' / 'reels').glob('*.mp4')):
@@ -27,8 +28,8 @@ for source in sorted((root / 'dist' / 'assets' / 'reels').glob('*.mp4')):
     subprocess.run([
         imageio_ffmpeg.get_ffmpeg_exe(), '-hide_banner', '-loglevel', 'error', '-y',
         '-ss', str(starts[source.stem]), '-i', str(source), '-t', '6',
-        '-vf', "scale='min(800,iw)':-2,fps=30,setsar=1", '-an', '-c:v', 'libx264',
-        '-preset', 'medium', '-crf', '26', '-pix_fmt', 'yuv420p',
+        '-vf', f"scale='min({large_previews.get(source.stem, 800)},iw)':-2,fps=30,setsar=1", '-an', '-c:v', 'libx264',
+        '-preset', 'medium', '-crf', '24' if source.stem in large_previews else '26', '-pix_fmt', 'yuv420p',
         '-movflags', '+faststart', '-map_metadata', '-1', str(target),
     ], check=True)
     print(f'{target.name}: {target.stat().st_size:,} bytes', flush=True)

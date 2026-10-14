@@ -5,6 +5,23 @@ nav.addEventListener('click', e => { if (e.target.closest('a')) { nav.classList.
 document.getElementById('year').textContent = new Date().getFullYear();
 
 const projects = {
+  "scarlet-ascension": {
+    "title": "Scarlet Ascension",
+    "category": "Soul & magic / Unreal Engine",
+    "realm": "crimson",
+    "image": "assets/reels/scarlet-ascension.webp",
+    "video": "assets/reels/scarlet-ascension.mp4",
+    "alt": "A floating figure channeling a crimson beam and dual-hand magic.",
+    "description": "A stream of scarlet energy meets a suspended figure, gathering at the chest while twin orbs of hand magic pulse on either side.",
+    "tags": [
+      "Character magic",
+      "Energy absorption",
+      "Crimson beam"
+    ],
+    "duration": "0:12",
+    "credit": "Whisp VFX studio",
+    "audio": "Silent reel"
+  },
   "spectral-serpent": {
     "title": "Spectral Serpent",
     "category": "Soul & magic / Unreal Engine",
@@ -19,6 +36,23 @@ const projects = {
       "Violet energy"
     ],
     "duration": "0:12",
+    "credit": "Whisp VFX studio",
+    "audio": "Silent reel"
+  },
+  "celestial-orbit": {
+    "title": "Celestial Orbit",
+    "category": "Soul & magic / Unreal Engine",
+    "realm": "soul",
+    "image": "assets/reels/celestial-orbit.webp",
+    "video": "assets/reels/celestial-orbit.mp4",
+    "alt": "Golden orbital rings and small luminous spheres circling a pillar of light.",
+    "description": "A bright central column anchors a moving constellation of rings, spheres, and fine particles. The capture includes both the full effect and a closer view of its motion.",
+    "tags": [
+      "Orbital motion",
+      "Light column",
+      "Particle detail"
+    ],
+    "duration": "0:16",
     "credit": "Whisp VFX studio",
     "audio": "Silent reel"
   },
@@ -39,20 +73,37 @@ const projects = {
     "credit": "Whisp VFX studio",
     "audio": "Silent reel"
   },
-  "scarlet-ascension": {
-    "title": "Scarlet Ascension",
+  "arcane-convergence": {
+    "title": "Arcane Convergence",
     "category": "Soul & magic / Unreal Engine",
-    "realm": "crimson",
-    "image": "assets/reels/scarlet-ascension.webp",
-    "video": "assets/reels/scarlet-ascension.mp4",
-    "alt": "A floating figure channeling a crimson beam and dual-hand magic.",
-    "description": "A stream of scarlet energy meets a suspended figure, gathering at the chest while twin orbs of hand magic pulse on either side.",
+    "realm": "soul",
+    "image": "assets/reels/arcane-convergence.webp",
+    "video": "assets/reels/arcane-convergence.mp4",
+    "alt": "Three luminous spell cores suspended above a circular golden sigil.",
+    "description": "Thin circular traces gather into a wide sigil while three glowing cores take shape above it. Restrained gold and white light define the sequence.",
     "tags": [
-      "Character magic",
-      "Energy absorption",
-      "Crimson beam"
+      "Magic circle",
+      "Converging cores",
+      "Golden light"
     ],
-    "duration": "0:12",
+    "duration": "0:09",
+    "credit": "Whisp VFX studio",
+    "audio": "Silent reel"
+  },
+  "violet-aegis": {
+    "title": "Violet Aegis",
+    "category": "Soul & magic / Unreal Engine",
+    "realm": "soul",
+    "image": "assets/reels/violet-aegis.webp",
+    "video": "assets/reels/violet-aegis.mp4",
+    "alt": "A glowing violet dome crossed by branching white energy.",
+    "description": "A hemispherical shield glows with violet light while bright branching lines travel across its surface, defining the curvature of the barrier.",
+    "tags": [
+      "Energy shield",
+      "Branching light",
+      "Violet dome"
+    ],
+    "duration": "0:05",
     "credit": "Whisp VFX studio",
     "audio": "Silent reel"
   },
@@ -90,40 +141,6 @@ const projects = {
     "credit": "Whisp VFX studio",
     "audio": "Silent reel"
   },
-  "celestial-orbit": {
-    "title": "Celestial Orbit",
-    "category": "Soul & magic / Unreal Engine",
-    "realm": "soul",
-    "image": "assets/reels/celestial-orbit.webp",
-    "video": "assets/reels/celestial-orbit.mp4",
-    "alt": "Golden orbital rings and small luminous spheres circling a pillar of light.",
-    "description": "A bright central column anchors a moving constellation of rings, spheres, and fine particles. The capture includes both the full effect and a closer view of its motion.",
-    "tags": [
-      "Orbital motion",
-      "Light column",
-      "Particle detail"
-    ],
-    "duration": "0:16",
-    "credit": "Whisp VFX studio",
-    "audio": "Silent reel"
-  },
-  "arcane-convergence": {
-    "title": "Arcane Convergence",
-    "category": "Soul & magic / Unreal Engine",
-    "realm": "soul",
-    "image": "assets/reels/arcane-convergence.webp",
-    "video": "assets/reels/arcane-convergence.mp4",
-    "alt": "Three luminous spell cores suspended above a circular golden sigil.",
-    "description": "Thin circular traces gather into a wide sigil while three glowing cores take shape above it. Restrained gold and white light define the sequence.",
-    "tags": [
-      "Magic circle",
-      "Converging cores",
-      "Golden light"
-    ],
-    "duration": "0:09",
-    "credit": "Whisp VFX studio",
-    "audio": "Silent reel"
-  },
   "crimson-flow-beam": {
     "title": "Crimson Flow Beam",
     "category": "Soul & magic / Unreal Engine",
@@ -153,23 +170,6 @@ const projects = {
       "Dark core",
       "Orbital strands",
       "Purple wisps"
-    ],
-    "duration": "0:05",
-    "credit": "Whisp VFX studio",
-    "audio": "Silent reel"
-  },
-  "violet-aegis": {
-    "title": "Violet Aegis",
-    "category": "Soul & magic / Unreal Engine",
-    "realm": "soul",
-    "image": "assets/reels/violet-aegis.webp",
-    "video": "assets/reels/violet-aegis.mp4",
-    "alt": "A glowing violet dome crossed by branching white energy.",
-    "description": "A hemispherical shield glows with violet light while bright branching lines travel across its surface, defining the curvature of the barrier.",
-    "tags": [
-      "Energy shield",
-      "Branching light",
-      "Violet dome"
     ],
     "duration": "0:05",
     "credit": "Whisp VFX studio",
@@ -263,7 +263,7 @@ const projects = {
 };
 const projectDialog = document.getElementById('project-dialog');
 const dialogReturnFocus = new WeakMap();
-let currentProject = 'spectral-serpent';
+let currentProject = 'scarlet-ascension';
 const projectOrder = Object.keys(projects);
 function openDialog(dialog, trigger = document.activeElement) { dialogReturnFocus.set(dialog, trigger); dialog.showModal(); }
 document.querySelectorAll('dialog').forEach(dialog => {
@@ -342,11 +342,24 @@ document.addEventListener('keydown', event => {
 document.getElementById('project-inquire').addEventListener('click', () => { dialogReturnFocus.delete(projectDialog); projectDialog.close(); });
 document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('.filter').forEach(filter => { const active = filter === button; filter.classList.toggle('active', active); filter.setAttribute('aria-pressed', String(active)); });
+  const selected = button.dataset.filter === 'featured';
   let count = 0;
-  document.querySelectorAll('.project').forEach(project => { project.hidden = button.dataset.filter !== 'all' && project.dataset.category !== button.dataset.filter; if (!project.hidden) count++; });
-  document.getElementById('gallery').classList.toggle('is-filtered', button.dataset.filter !== 'all');
-  document.getElementById('project-count').textContent = `${count} ${count === 1 ? 'reel' : 'reels'}`;
+  document.querySelectorAll('#gallery .project').forEach(project => {
+    project.hidden = selected ? project.dataset.featured !== 'true' : button.dataset.filter !== 'all' && project.dataset.category !== button.dataset.filter;
+    if (!project.hidden) count++;
+  });
+  const gallery = document.getElementById('gallery');
+  gallery.classList.toggle('is-curated', selected);
+  gallery.classList.toggle('is-filtered', !selected);
+  document.getElementById('collection-footer').hidden = button.dataset.filter === 'all';
+  document.getElementById('project-count').textContent = `${count} ${selected ? 'selected ' : ''}${count === 1 ? 'reel' : 'reels'}`;
+  document.getElementById('gallery-top').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
 }));
+document.getElementById('show-all-projects').addEventListener('click', () => {
+  const all = document.querySelector('[data-filter="all"]');
+  all.click();
+  all.focus({ preventScroll: true });
+});
 
 const realmNames = { veil: 'The veil', soul: 'The soul', crimson: 'The ember' };
 const realmProjects = { veil: 'celestial-orbit', soul: 'spectral-serpent', crimson: 'scarlet-ascension' };
