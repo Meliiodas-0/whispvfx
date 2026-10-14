@@ -10,6 +10,10 @@ The artist approved publication of all 15 videos from their central VFX folder. 
 
 The gallery now contains playable reels with WebP posters and smaller thumbnails in `dist/assets/reels/`. The three concept illustrations remain as labeled hero/studio atmosphere backgrounds, not gallery work. Hero realm links map through `realmProjects` to actual reels. Gallery layout repeats asymmetric pairs and wide cards; filtered layouts support multiple results.
 
+Gallery cards also play silent short previews from `dist/assets/previews/`, with a separate toggle. `dist/previews.js` loads sources only as cards enter view, limits playback to two visible cards, and pauses on filtering, dialogs, page hiding, or preview-toggle changes. Reduced-motion and data-saving preferences default to posters. `scripts/make-previews.py` regenerates previews from optimized web reels without changing originals.
+
+WhatsApp is the default contact channel. The user supplied 9971355102, configured as `919971355102` with India's country code. The form does not request email on WhatsApp; selecting Email reveals and requires that field. No studio email address or ArtStation URL has been supplied. Email briefs remain copy/save drafts, and unconfigured direct contact links are hidden.
+
 Web videos are H.264/yuv420p MP4 with fast-start metadata, capped at 1600 pixels wide without upscaling. Original framing, speed, frame rate, and duration are preserved. The supplied clips are silent, including captures with silent AAC tracks. Original captures and processing/QA files remain outside the repository; never replace the central final videos with these web copies.
 
 Repository: **https://github.com/Meliiodas-0/whispvfx**. Default branch: `main`.
@@ -34,6 +38,7 @@ Read `AGENTS.md` and this guide. Ask the user for the folder containing the actu
 | `dist/index.html` | Gallery cards, filters/counts, hero realm choices, and project-dialog markup. `data-project` IDs must match the project object. |
 | `dist/immersive.css` | Realm backgrounds and swatches; repeating asymmetric gallery layout, filtered grids, and responsive video viewer. |
 | `dist/atmosphere.js` | Particles, motion controls, and optional ambient sound. Preserve this behavior during content changes. |
+| `dist/previews.js` | Lazy, silent card previews and their playback lifecycle. |
 | `dist/studio-config.js` | Real ArtStation URL, email, and digits-only WhatsApp number including country code. |
 | `vercel.json` | Buildless static hosting, output directory `dist`. |
 
@@ -58,6 +63,7 @@ Open `http://127.0.0.1:4173/`. Check the actual rendering at desktop and mobile 
 ```sh
 node --check dist/app.js
 node --check dist/atmosphere.js
+node --check dist/previews.js
 node scripts/verify-content.mjs
 ```
 

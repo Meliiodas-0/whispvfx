@@ -3,5 +3,5 @@
 window.WHISP_CONTACT = {
   artstation: '',
   email: '',
-  whatsapp: ''
+  whatsapp: '919971355102'
 };

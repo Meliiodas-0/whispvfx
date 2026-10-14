@@ -14,6 +14,7 @@ assert.equal(cards.length, Object.keys(projects).length, 'Every project needs ex
 assert.equal(new Set(cards.map(m => m[1])).size, cards.length, 'Gallery IDs must be unique');
 const assets = new Set();
 let videoBytes = 0;
+let previewBytes = 0;
 for (const [id, project] of Object.entries(projects)) {
   assert(cards.some(m => m[1] === id), `Missing card: ${id}`);
   assert(project.title && project.alt && project.description && project.credit, `Incomplete content: ${id}`);
@@ -31,6 +32,13 @@ for (const [id, project] of Object.entries(projects)) {
       assert(contents.indexOf(Buffer.from('moov')) < contents.indexOf(Buffer.from('mdat')), `Reel needs fast-start metadata: ${id}`);
     }
   }
+  const previewPath = `assets/previews/${id}.mp4`;
+  const previewFile = resolve(root, 'dist', previewPath);
+  assert(existsSync(previewFile) && statSync(previewFile).size > 0, `Missing preview: ${id}`);
+  assert(html.includes(`data-src="${previewPath}"`), `Gallery has no preview source: ${id}`);
+  const preview = readFileSync(previewFile);
+  assert(preview.indexOf(Buffer.from('moov')) < preview.indexOf(Buffer.from('mdat')), `Preview needs fast-start metadata: ${id}`);
+  previewBytes += preview.length;
 }
 const mapping = app.match(/const realmProjects = (\{[^;]+\});/)[1];
 const realms = vm.runInNewContext(`(${mapping})`);
@@ -38,4 +46,10 @@ for (const id of Object.values(realms)) assert(projects[id], `Hero links to miss
 for (const src of html.matchAll(/(?:src|href)="((?:assets\/)[^"]+)"/g)) assert(existsSync(resolve(root, 'dist', src[1])), `Broken HTML asset: ${src[1]}`);
 assert(!html.includes('Explore study') && !html.includes('3 studies'), 'Sample gallery wording remains');
 assert(videoBytes < 100_000_000, 'Media bundle is too large');
-console.log(`${cards.length} projects, ${assets.size} media assets, valid hero mappings, fast-start MP4s; ${(videoBytes / 1e6).toFixed(2)} MB of video.`);
+assert(previewBytes < 10_000_000, 'Preview bundle needs further optimization');
+const contactConfig = {};
+vm.runInNewContext(readFileSync(resolve(root, 'dist/studio-config.js'), 'utf8'), { window: contactConfig });
+assert.equal(contactConfig.WHISP_CONTACT.whatsapp, '919971355102');
+assert(html.includes('name="channel" value="whatsapp" checked'), 'WhatsApp must be the default');
+assert(html.includes('name="channel" value="email"'), 'Email toggle is missing');
+console.log(`${cards.length} projects, ${assets.size} full-reel assets, ${cards.length} fast-start previews; ${(videoBytes / 1e6).toFixed(2)} MB of full reels + ${(previewBytes / 1e6).toFixed(2)} MB of previews. WhatsApp defaults to +91 9971355102.`);

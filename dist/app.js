@@ -375,13 +375,27 @@ const contactDialog = document.getElementById('contact-dialog');
 document.querySelectorAll('[data-contact]').forEach(link => {
   const method = link.dataset.contact;
   if (contact[method]) {
+    link.hidden = false;
     link.href = method === 'email' ? `mailto:${contact.email}` : method === 'whatsapp' ? `https://wa.me/${contact.whatsapp}` : contact.artstation;
-    link.querySelector('small').textContent = method === 'email' ? contact.email : method === 'whatsapp' ? 'Start a direct message' : 'Explore our portfolio';
+    link.querySelector('small').textContent = method === 'email' ? contact.email : method === 'whatsapp' ? '+91 99713 55102' : 'Explore our portfolio';
     if (method !== 'email') { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
   } else { link.addEventListener('click', event => { event.preventDefault(); openDialog(contactDialog, link); }); }
 });
 document.getElementById('prepare-brief').addEventListener('click', () => { dialogReturnFocus.delete(contactDialog); contactDialog.close(); document.getElementById('inquiry-form').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' }); document.querySelector('[name="name"]').focus({ preventScroll: true }); });
-if (contact.email || contact.whatsapp) document.getElementById('form-note').textContent = 'Review your brief, then open your chosen app. Nothing is sent automatically.';
+const inquiryForm = document.getElementById('inquiry-form');
+function updateContactChannel() {
+  const emailSelected = inquiryForm.elements.channel.value === 'email';
+  const emailInput = inquiryForm.elements.email;
+  document.getElementById('email-field').hidden = !emailSelected;
+  emailInput.disabled = !emailSelected;
+  emailInput.required = emailSelected;
+  document.getElementById('prepare-label').textContent = emailSelected ? 'Prepare email brief' : 'Prepare WhatsApp message';
+  document.getElementById('form-note').textContent = emailSelected
+    ? (contact.email ? 'Review your brief before opening email. You choose when to send.' : 'Our studio email is coming soon. Prepare a brief to copy or save.')
+    : 'Review your brief before opening WhatsApp. You choose when to send.';
+}
+inquiryForm.querySelectorAll('[name="channel"]').forEach(input => input.addEventListener('change', updateContactChannel));
+updateContactChannel();
 const messageDialog = document.getElementById('message-dialog');
 document.getElementById('inquiry-form').addEventListener('submit', event => {
   event.preventDefault();
@@ -391,7 +405,9 @@ document.getElementById('inquiry-form').addEventListener('submit', event => {
   const name = String(data.get('name')).trim();
   const message = String(data.get('message')).trim();
   if (!name || message.length < 10) { const field = !name ? form.elements.name : form.elements.message; field.setCustomValidity(!name ? 'Please enter your name.' : 'Please share at least 10 characters about your project.'); field.reportValidity(); field.addEventListener('input', () => field.setCustomValidity(''), { once: true }); return; }
-  const text = `Hi WhispVFX,\n\nI'm ${name}.\nEmail: ${String(data.get('email')).trim()}\nProject: ${data.get('project')}\n\n${message}\n\nLooking forward to creating something together.`;
+  const email = String(data.get('email') || '').trim();
+  const emailLine = email ? `\nEmail: ${email}` : '';
+  const text = `Hi Whisp VFX studio,\n\nI'm ${name}.${emailLine}\nProject: ${data.get('project')}\n\n${message}\n\nLooking forward to creating something together.`;
   document.getElementById('message-preview').value = text;
   document.getElementById('copy-status').textContent = '';
   const channel = data.get('channel');
