@@ -342,24 +342,16 @@ document.addEventListener('keydown', event => {
 document.getElementById('project-inquire').addEventListener('click', () => { dialogReturnFocus.delete(projectDialog); projectDialog.close(); });
 document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('.filter').forEach(filter => { const active = filter === button; filter.classList.toggle('active', active); filter.setAttribute('aria-pressed', String(active)); });
-  const selected = button.dataset.filter === 'featured';
   let count = 0;
   document.querySelectorAll('#gallery .project').forEach(project => {
-    project.hidden = selected ? project.dataset.featured !== 'true' : button.dataset.filter !== 'all' && project.dataset.category !== button.dataset.filter;
+    project.hidden = button.dataset.filter !== 'all' && project.dataset.category !== button.dataset.filter;
     if (!project.hidden) count++;
   });
   const gallery = document.getElementById('gallery');
-  gallery.classList.toggle('is-curated', selected);
-  gallery.classList.toggle('is-filtered', !selected);
-  document.getElementById('collection-footer').hidden = button.dataset.filter === 'all';
-  document.getElementById('project-count').textContent = `${count} ${selected ? 'selected ' : ''}${count === 1 ? 'reel' : 'reels'}`;
+  gallery.classList.toggle('is-filtered', button.dataset.filter !== 'all');
+  document.getElementById('project-count').textContent = `${count} ${count === 1 ? 'reel' : 'reels'}`;
   document.getElementById('gallery-top').scrollIntoView({ behavior: 'instant', block: 'start' });
 }));
-document.getElementById('show-all-projects').addEventListener('click', () => {
-  const all = document.querySelector('[data-filter="all"]');
-  all.click();
-  all.focus({ preventScroll: true });
-});
 
 const realmNames = { veil: 'The veil', soul: 'The soul', crimson: 'The ember' };
 const realmProjects = { veil: 'celestial-orbit', soul: 'spectral-serpent', crimson: 'scarlet-ascension' };

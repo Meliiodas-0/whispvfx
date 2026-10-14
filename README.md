@@ -22,7 +22,7 @@ Optimized H.264 MP4s, WebP posters, and smaller gallery thumbnails live in `dist
 
 Gallery cards also contain silent previews in `dist/assets/previews/` (6.44 MB total). They are short excerpts at original speed and 30 fps, up to 1280 pixels wide for the lead piece, 1000 pixels for its companion pieces, and 800 pixels for the smaller works. At most two visible cards play; previews pause when offscreen, filtered out, in the background, or covered by a dialog. The preview toggle, reduced-motion preference, and data-saving preference keep posters available without autoplay. Generate all loops with `python scripts/make-previews.py`, or name an effect to regenerate only that loop; the helper requires `imageio-ffmpeg` and reads only optimized web reels.
 
-The opening selection contains six curated pieces: Scarlet Ascension, Spectral Serpent, Celestial Orbit, Fourfold Frost, Arcane Convergence, and Violet Aegis. All 15 reels remain available through All work and the category filters. Filtering returns visitors to the start of the gallery. The project viewer still navigates all 15 pieces.
+All 15 reels are visible from the start. All work is the default filter; category filters narrow the collection. There is no selected-six view or expand-all step. The project viewer navigates all 15 pieces.
 
 ## Implementation
 
@@ -30,7 +30,7 @@ Plain HTML, CSS and JavaScript. Native accessible dialogs and disclosure element
 
 The immersive layer lives in `dist/immersive.css` and `dist/atmosphere.js`. Three realm buttons change the hero art and particle palette, with links to actual reels. Motion can be paused, respects reduced-motion preferences, and stops when the hero is offscreen. Ambient Web Audio starts only after the visitor turns it on and turns off when the page is hidden. Project dialogs include previous/next and arrow-key navigation, Escape and backdrop dismissal, and focus restoration.
 
-The artist-requested overgrown theme lives in `dist/overgrowth.css`: original branching vine artwork, charcoal shadows, ember-red accents, organic reel portals, and a continuous dark studio/contact composition. The six-piece selection opens first; filters expose all 15. Portal crops are decorative previews; opening a reel preserves the complete source frame. Read `DESIGN_NOTES.md` for the visual reference and generated-asset provenance.
+The theme lives in `dist/overgrowth.css`: organic reel portals, charcoal shadows, and ember accents. `dist/vines.js` draws foreground SVG roots at the viewport edges. Subtle light follows the roots as visitors scroll; there is no vine photograph or background texture. Motion controls, reduced-motion preferences, and open dialogs govern the effect. Read `DESIGN_NOTES.md` for implementation details.
 
 Run `node --check dist/app.js`, `node --check dist/atmosphere.js`, `node --check dist/previews.js`, and `node scripts/verify-content.mjs` before publishing. Browser verification must include real video/preview playback, the WhatsApp draft destination, the email toggle, and both desktop and mobile widths.
 

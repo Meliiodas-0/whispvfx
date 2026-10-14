@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="overgrowth.css">
 </head>
 <body>
-  <div class="world-vines" aria-hidden="true"></div>
+  <div id="foreground-vines" class="vine-overlay" aria-hidden="true"></div>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <a class="brand" href="#" aria-label="WhispVFX home"><span class="brand-mark" aria-hidden="true">W</span><span>Whisp<span class="brand-vfx">VFX</span></span></a>
@@ -42,16 +42,15 @@
       <div id="gallery-top" class="gallery-anchor" aria-hidden="true"></div>
       <div class="work-toolbar">
         <div class="filters" role="group" aria-label="Filter projects">
-          <button class="filter active" type="button" data-filter="featured" aria-pressed="true">Selected <span aria-hidden="true">06</span></button>
-          <button class="filter" type="button" data-filter="all" aria-pressed="false">All work <span aria-hidden="true">15</span></button>
+          <button class="filter active" type="button" data-filter="all" aria-pressed="true">All work <span aria-hidden="true">15</span></button>
           <button class="filter" type="button" data-filter="magic" aria-pressed="false">Magic</button>
           <button class="filter" type="button" data-filter="elemental" aria-pressed="false">Elemental</button>
           <button class="filter" type="button" data-filter="atmosphere" aria-pressed="false">Atmosphere</button>
         </div>
-        <div class="gallery-controls"><button id="preview-toggle" class="preview-toggle" type="button" aria-pressed="true"><i aria-hidden="true"></i><span>Previews on</span></button><span id="project-count" class="sr-only" aria-live="polite">6 selected reels</span></div>
+        <div class="gallery-controls"><button id="preview-toggle" class="preview-toggle" type="button" aria-pressed="true"><i aria-hidden="true"></i><span>Previews on</span></button><span id="project-count" class="sr-only" aria-live="polite">15 reels</span></div>
       </div>
-      <div id="gallery" class="work-grid is-curated">
-        <button class="project project-feature" type="button" data-project="scarlet-ascension" data-category="magic" data-featured="true" data-tone="crimson" aria-label="Watch Scarlet Ascension">
+      <div id="gallery" class="work-grid">
+        <button class="project project-feature" type="button" data-project="scarlet-ascension" data-category="magic" data-tone="crimson" aria-label="Watch Scarlet Ascension">
           <div class="project-image">
             <img src="assets/reels/scarlet-ascension-thumb.webp" alt="A floating figure channeling a crimson beam and dual-hand magic." width="1280" height="720" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/scarlet-ascension-thumb.webp" data-src="assets/previews/scarlet-ascension.mp4"></video>
@@ -63,7 +62,7 @@
           <div class="project-info"><h3>Scarlet Ascension</h3><span>Soul & magic</span></div>
           <p class="project-note">Character magic · Energy absorption</p>
         </button>
-        <button class="project project-half" type="button" data-project="spectral-serpent" data-category="magic" data-featured="true" data-tone="violet" aria-label="Watch Spectral Serpent">
+        <button class="project project-half" type="button" data-project="spectral-serpent" data-category="magic" data-tone="violet" aria-label="Watch Spectral Serpent">
           <div class="project-image">
             <img src="assets/reels/spectral-serpent-thumb.webp" alt="A silver-violet serpent rising from a ring of spectral energy." width="1280" height="926" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/spectral-serpent-thumb.webp" data-src="assets/previews/spectral-serpent.mp4"></video>
@@ -75,7 +74,7 @@
           <div class="project-info"><h3>Spectral Serpent</h3><span>Soul & magic</span></div>
           <p class="project-note">Spectral form · Summoning</p>
         </button>
-        <button class="project project-half" type="button" data-project="celestial-orbit" data-category="magic" data-featured="true" data-tone="gold" aria-label="Watch Celestial Orbit">
+        <button class="project project-half" type="button" data-project="celestial-orbit" data-category="magic" data-tone="gold" aria-label="Watch Celestial Orbit">
           <div class="project-image">
             <img src="assets/reels/celestial-orbit-thumb.webp" alt="Golden orbital rings and small luminous spheres circling a pillar of light." width="1280" height="720" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/celestial-orbit-thumb.webp" data-src="assets/previews/celestial-orbit.mp4"></video>
@@ -87,7 +86,7 @@
           <div class="project-info"><h3>Celestial Orbit</h3><span>Soul & magic</span></div>
           <p class="project-note">Orbital motion · Light column</p>
         </button>
-        <button class="project" type="button" data-project="fourfold-frost" data-category="elemental" data-featured="true" data-tone="ice" aria-label="Watch Fourfold Frost">
+        <button class="project" type="button" data-project="fourfold-frost" data-category="elemental" data-tone="ice" aria-label="Watch Fourfold Frost">
           <div class="project-image">
             <img src="assets/reels/fourfold-frost-thumb.webp" alt="Four rings of ice erupting into thick crystalline formations." width="1280" height="660" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/fourfold-frost-thumb.webp" data-src="assets/previews/fourfold-frost.mp4"></video>
@@ -99,7 +98,7 @@
           <div class="project-info"><h3>Fourfold Frost</h3><span>Elemental</span></div>
           <p class="project-note">Ice crystals · Ground burst</p>
         </button>
-        <button class="project" type="button" data-project="arcane-convergence" data-category="magic" data-featured="true" data-tone="gold" aria-label="Watch Arcane Convergence">
+        <button class="project" type="button" data-project="arcane-convergence" data-category="magic" data-tone="gold" aria-label="Watch Arcane Convergence">
           <div class="project-image">
             <img src="assets/reels/arcane-convergence-thumb.webp" alt="Three luminous spell cores suspended above a circular golden sigil." width="1280" height="762" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/arcane-convergence-thumb.webp" data-src="assets/previews/arcane-convergence.mp4"></video>
@@ -111,7 +110,7 @@
           <div class="project-info"><h3>Arcane Convergence</h3><span>Soul & magic</span></div>
           <p class="project-note">Magic circle · Converging cores</p>
         </button>
-        <button class="project" type="button" data-project="violet-aegis" data-category="magic" data-featured="true" data-tone="violet" aria-label="Watch Violet Aegis">
+        <button class="project" type="button" data-project="violet-aegis" data-category="magic" data-tone="violet" aria-label="Watch Violet Aegis">
           <div class="project-image">
             <img src="assets/reels/violet-aegis-thumb.webp" alt="A glowing violet dome crossed by branching white energy." width="1280" height="706" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/violet-aegis-thumb.webp" data-src="assets/previews/violet-aegis.mp4"></video>
@@ -123,7 +122,7 @@
           <div class="project-info"><h3>Violet Aegis</h3><span>Soul & magic</span></div>
           <p class="project-note">Energy shield · Branching light</p>
         </button>
-        <button class="project" type="button" data-project="crimson-hand-magic" data-category="magic" data-featured="false" data-tone="silver" aria-label="Watch Crimson Hand Magic" hidden>
+        <button class="project" type="button" data-project="crimson-hand-magic" data-category="magic" data-tone="silver" aria-label="Watch Crimson Hand Magic">
           <div class="project-image">
             <img src="assets/reels/crimson-hand-magic-thumb.webp" alt="A luminous red orb hovering over an outstretched hand." width="1280" height="720" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/crimson-hand-magic-thumb.webp" data-src="assets/previews/crimson-hand-magic.mp4"></video>
@@ -135,7 +134,7 @@
           <div class="project-info"><h3>Crimson Hand Magic</h3><span>Soul & magic</span></div>
           <p class="project-note">Hand magic · Energy orb</p>
         </button>
-        <button class="project" type="button" data-project="crimson-rift" data-category="elemental" data-featured="false" data-tone="silver" aria-label="Watch Crimson Rift" hidden>
+        <button class="project" type="button" data-project="crimson-rift" data-category="elemental" data-tone="silver" aria-label="Watch Crimson Rift">
           <div class="project-image">
             <img src="assets/reels/crimson-rift-thumb.webp" alt="Dark red spikes rising around a circular ground rift." width="1280" height="646" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/crimson-rift-thumb.webp" data-src="assets/previews/crimson-rift.mp4"></video>
@@ -147,7 +146,7 @@
           <div class="project-info"><h3>Crimson Rift</h3><span>Elemental</span></div>
           <p class="project-note">Ground rift · Anticipation</p>
         </button>
-        <button class="project" type="button" data-project="crimson-flow-beam" data-category="magic" data-featured="false" data-tone="silver" aria-label="Watch Crimson Flow Beam" hidden>
+        <button class="project" type="button" data-project="crimson-flow-beam" data-category="magic" data-tone="silver" aria-label="Watch Crimson Flow Beam">
           <div class="project-image">
             <img src="assets/reels/crimson-flow-beam-thumb.webp" alt="Flowing red ribbons forming an energy beam against darkness." width="1280" height="748" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/crimson-flow-beam-thumb.webp" data-src="assets/previews/crimson-flow-beam.mp4"></video>
@@ -159,7 +158,7 @@
           <div class="project-info"><h3>Crimson Flow Beam</h3><span>Soul & magic</span></div>
           <p class="project-note">Energy beam · Ribbon flow</p>
         </button>
-        <button class="project" type="button" data-project="void-orb" data-category="magic" data-featured="false" data-tone="silver" aria-label="Watch Void Orb" hidden>
+        <button class="project" type="button" data-project="void-orb" data-category="magic" data-tone="silver" aria-label="Watch Void Orb">
           <div class="project-image">
             <img src="assets/reels/void-orb-thumb.webp" alt="A dark violet orb wrapped in swirling spectral strands." width="1280" height="796" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/void-orb-thumb.webp" data-src="assets/previews/void-orb.mp4"></video>
@@ -171,7 +170,7 @@
           <div class="project-info"><h3>Void Orb</h3><span>Soul & magic</span></div>
           <p class="project-note">Dark core · Orbital strands</p>
         </button>
-        <button class="project" type="button" data-project="red-lance" data-category="magic" data-featured="false" data-tone="silver" aria-label="Watch Red Lance" hidden>
+        <button class="project" type="button" data-project="red-lance" data-category="magic" data-tone="silver" aria-label="Watch Red Lance">
           <div class="project-image">
             <img src="assets/reels/red-lance-thumb.webp" alt="A red energy lance launching through a bright circular ring." width="1280" height="650" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/red-lance-thumb.webp" data-src="assets/previews/red-lance.mp4"></video>
@@ -183,7 +182,7 @@
           <div class="project-info"><h3>Red Lance</h3><span>Soul & magic</span></div>
           <p class="project-note">Inward charge · Projectile</p>
         </button>
-        <button class="project" type="button" data-project="storm-descent" data-category="atmosphere" data-featured="false" data-tone="silver" aria-label="Watch Storm Descent" hidden>
+        <button class="project" type="button" data-project="storm-descent" data-category="atmosphere" data-tone="silver" aria-label="Watch Storm Descent">
           <div class="project-image">
             <img src="assets/reels/storm-descent-thumb.webp" alt="A dark red cloud sending a twisting energy column down through a blue sky." width="1280" height="934" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/storm-descent-thumb.webp" data-src="assets/previews/storm-descent.mp4"></video>
@@ -195,7 +194,7 @@
           <div class="project-info"><h3>Storm Descent</h3><span>Atmosphere</span></div>
           <p class="project-note">Sky effect · Energy column</p>
         </button>
-        <button class="project" type="button" data-project="rose-shatter" data-category="magic" data-featured="false" data-tone="silver" aria-label="Watch Rose Shatter" hidden>
+        <button class="project" type="button" data-project="rose-shatter" data-category="magic" data-tone="silver" aria-label="Watch Rose Shatter">
           <div class="project-image">
             <img src="assets/reels/rose-shatter-thumb.webp" alt="Pink fragments and ribbons gathering into a bright hemispherical burst." width="1280" height="904" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/rose-shatter-thumb.webp" data-src="assets/previews/rose-shatter.mp4"></video>
@@ -207,7 +206,7 @@
           <div class="project-info"><h3>Rose Shatter</h3><span>Soul & magic</span></div>
           <p class="project-note">Fragment motion · Ribbon trails</p>
         </button>
-        <button class="project" type="button" data-project="ember-beam" data-category="elemental" data-featured="false" data-tone="silver" aria-label="Watch Ember Beam" hidden>
+        <button class="project" type="button" data-project="ember-beam" data-category="elemental" data-tone="silver" aria-label="Watch Ember Beam">
           <div class="project-image">
             <img src="assets/reels/ember-beam-thumb.webp" alt="An orange energy beam connecting a fiery ring to a bright impact." width="960" height="540" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/ember-beam-thumb.webp" data-src="assets/previews/ember-beam.mp4"></video>
@@ -219,7 +218,7 @@
           <div class="project-info"><h3>Ember Beam</h3><span>Elemental</span></div>
           <p class="project-note">Fire ring · Beam</p>
         </button>
-        <button class="project" type="button" data-project="surface-impact" data-category="elemental" data-featured="false" data-tone="silver" aria-label="Watch Surface Impact" hidden>
+        <button class="project" type="button" data-project="surface-impact" data-category="elemental" data-tone="silver" aria-label="Watch Surface Impact">
           <div class="project-image">
             <img src="assets/reels/surface-impact-thumb.webp" alt="A bright beam striking a stone sphere with sparks and debris." width="1280" height="726" loading="lazy" decoding="async">
             <video class="project-preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="assets/reels/surface-impact-thumb.webp" data-src="assets/previews/surface-impact.mp4"></video>
@@ -232,7 +231,6 @@
           <p class="project-note">Surface contact · Sparks</p>
         </button>
       </div>
-      <div class="collection-footer" id="collection-footer"><p>There’s more in the collection.<span>15 effects. Each with its own character.</span></p><button type="button" id="show-all-projects">Explore all 15 reels <span aria-hidden="true">↗</span></button></div>
     </section>
     <section class="studio section" id="studio" aria-labelledby="studio-title">
       <div class="chapter-line"><span>02 / The craft</span><span>From a spark to a spectacle</span></div>
@@ -261,6 +259,7 @@
   <script src="studio-config.js"></script>
   <script src="app.js" defer></script>
   <script src="atmosphere.js" defer></script>
+  <script src="vines.js" defer></script>
   <script src="previews.js" defer></script>
 </body>
 </html>
