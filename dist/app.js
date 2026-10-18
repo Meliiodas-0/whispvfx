@@ -4,6 +4,15 @@ menuButton.addEventListener('click', () => { const open = menuButton.getAttribut
 nav.addEventListener('click', e => { if (e.target.closest('a')) { nav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-label', 'Open navigation'); } });
 document.getElementById('year').textContent = new Date().getFullYear();
 
+const heroVideo = document.querySelector('.hero-reel');
+const heroStartAt = Number(heroVideo?.dataset.startAt || 0);
+function keepHeroAtEffectStart() {
+  if (!heroVideo || !Number.isFinite(heroStartAt) || heroStartAt <= 0 || !Number.isFinite(heroVideo.duration)) return;
+  if (heroVideo.currentTime < heroStartAt - 0.08) heroVideo.currentTime = heroStartAt;
+}
+heroVideo?.addEventListener('loadedmetadata', keepHeroAtEffectStart);
+heroVideo?.addEventListener('timeupdate', keepHeroAtEffectStart);
+
 const projects = {
   "scarlet-ascension": {
     "title": "Scarlet Ascension",
@@ -436,3 +445,4 @@ document.getElementById('save-message').addEventListener('click', () => {
   const blob = new Blob([document.getElementById('message-preview').value], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = 'WhispVFX-project-brief.txt'; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); document.getElementById('copy-status').textContent = 'Your brief is ready to save.';
 });
+
