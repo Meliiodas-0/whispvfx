@@ -10,9 +10,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="immersive.css">
-  <link rel="stylesheet" href="pro.css">
+  <link rel="stylesheet" href="pro.css?v=20261018-dragon">
 </head>
 <body>
+  <div id="foreground-vines" class="vine-overlay" aria-hidden="true"></div>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <a class="brand" href="#" aria-label="WhispVFX home"><span class="brand-mark" aria-hidden="true">W</span><span>Whisp<span class="brand-vfx">VFX</span></span></a>
@@ -22,17 +23,17 @@
   </header>
   <main id="main">
     <section class="hero" aria-labelledby="hero-title" data-current-realm="veil">
-      <div class="hero-art" role="img" aria-label="Concept atmosphere: a silver spirit in a ruined cathedral"><div class="realm-layer active" data-scene="veil"></div><div class="realm-layer" data-scene="soul"></div><div class="realm-layer" data-scene="crimson"></div></div>
+      <div class="hero-art" role="img" aria-label="Spectral Serpent: a silver-violet dragon-like Unreal Engine VFX form"><video class="hero-reel" autoplay muted loop playsinline preload="metadata" poster="assets/reels/spectral-serpent.webp" aria-label="Spectral Serpent Unreal Engine reel"><source src="assets/reels/spectral-serpent.mp4" type="video/mp4"></video><div class="realm-layer active" data-scene="veil"></div><div class="realm-layer" data-scene="soul"></div><div class="realm-layer" data-scene="crimson"></div></div>
       <canvas id="atmosphere-canvas" aria-hidden="true"></canvas><div class="hero-shade"></div>
       <span class="hero-side-note" aria-hidden="true">Real-time magic. Lasting impressions.</span>
-      <div class="hero-content"><div class="hero-kicker">An independent Unreal &amp; Unity VFX studio</div>
-        <h1 id="hero-title"><span>VFX for worlds</span><span>that feel alive.</span></h1>
-        <p>Real-time effects for Unreal Engine and Unity, shaped with a cinematic eye.</p>
-        <div class="hero-actions"><a class="button button-light" href="#work">View the work <span aria-hidden="true">↘</span></a></div>
+      <div class="hero-content"><div class="hero-kicker">Featured reel · Unreal Engine</div>
+        <h1 id="hero-title"><span>A dragon in motion.</span><span>Spectral Serpent.</span></h1>
+        <p>A spectral creature summoned for a real-time world, built in Unreal Engine.</p>
+        <div class="hero-actions"><a class="button button-light" href="#work">Explore the effects <span aria-hidden="true">↘</span></a></div>
       </div>
       <div class="realm-console"><div class="realm-console-intro"><span class="console-star" aria-hidden="true">✧</span><p>A different kind of presence.<small>Choose a realm. Feel the shift.</small></p></div><div class="realm-switcher" role="group" aria-label="Choose an atmosphere"><button class="realm-choice active" type="button" data-realm="veil" aria-pressed="true"><span class="realm-swatch veil-swatch" aria-hidden="true"></span><span>The veil<small>Silver & silence</small></span></button><button class="realm-choice" type="button" data-realm="soul" aria-pressed="false"><span class="realm-swatch soul-swatch" aria-hidden="true"></span><span>The soul<small>Energy & wonder</small></span></button><button class="realm-choice" type="button" data-realm="crimson" aria-pressed="false"><span class="realm-swatch crimson-swatch" aria-hidden="true"></span><span>The ember<small>Fire & awakening</small></span></button></div><button class="realm-open" type="button" data-project="celestial-orbit">Watch a realm reel <span aria-hidden="true">✧</span></button></div>
       <div class="hero-bottom"><a href="#work" class="scroll-link"><span class="scroll-line" aria-hidden="true"></span>There’s more beneath the surface</a><div class="experience-controls"><button type="button" id="motion-toggle" aria-pressed="true"><span class="motion-icon" aria-hidden="true">◌</span><span data-motion-label>Motion on</span></button><button type="button" id="sound-toggle" aria-pressed="false"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span data-sound-label>Sound off</span></button></div></div>
-      <span class="hero-art-credit">AI concept atmosphere · Actual VFX reels below</span>
+      <span class="hero-art-credit">Spectral Serpent · Unreal Engine · Featured reel</span>
       <p id="realm-status" class="sr-only" role="status">The veil atmosphere selected.</p>
     </section>
     <section class="work section" id="work" aria-labelledby="work-title">
@@ -258,6 +259,7 @@
   <script src="studio-config.js"></script>
   <script src="app.js" defer></script>
   <script src="atmosphere.js" defer></script>
+  <script src="vines.js?v=20261018-dragon" defer></script>
   <script src="previews.js" defer></script>
 </body>
 </html>

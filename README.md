@@ -30,7 +30,7 @@ Plain HTML, CSS and JavaScript. Native accessible dialogs and disclosure element
 
 The immersive layer lives in `dist/immersive.css` and `dist/atmosphere.js`. Three realm buttons change the hero art and particle palette, with links to actual reels. Motion can be paused, respects reduced-motion preferences, and stops when the hero is offscreen. Ambient Web Audio starts only after the visitor turns it on and turns off when the page is hidden. Project dialogs include previous/next and arrow-key navigation, Escape and backdrop dismissal, and focus restoration.
 
-The portfolio presentation lives in `dist/pro.css`: a restrained dark studio interface with a concise hero, one filter row, consistent rectangular reel tiles, compact metadata, and a light studio section. The structure was informed by reviewing Motzify's works page, while the content, media, copy, and implementation remain Whisp's own. Decorative vines were removed so the work stays legible.
+The portfolio presentation lives in `dist/pro.css`: a restrained dark studio interface with a concise hero, the actual Spectral Serpent Unreal Engine reel on the front page, one filter row, consistent rectangular reel tiles, compact metadata, and a light studio section. `dist/vines.js` keeps the edge vines subtle and integrated with the same palette. The structure was informed by reviewing Motzify's works page, while the content, media, copy, and implementation remain Whisp's own.
 
 Run `node --check dist/app.js`, `node --check dist/atmosphere.js`, `node --check dist/previews.js`, and `node scripts/verify-content.mjs` before publishing. Browser verification must include real video/preview playback, the WhatsApp draft destination, the email toggle, and both desktop and mobile widths.
 
