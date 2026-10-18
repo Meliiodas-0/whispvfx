@@ -30,7 +30,7 @@ Plain HTML, CSS and JavaScript. Native accessible dialogs and disclosure element
 
 The immersive layer lives in `dist/immersive.css` and `dist/atmosphere.js`. Three realm buttons change the hero art and particle palette, with links to actual reels. Motion can be paused, respects reduced-motion preferences, and stops when the hero is offscreen. Ambient Web Audio starts only after the visitor turns it on and turns off when the page is hidden. Project dialogs include previous/next and arrow-key navigation, Escape and backdrop dismissal, and focus restoration.
 
-The theme lives in `dist/overgrowth.css`: organic reel portals, charcoal shadows, and ember accents. `dist/vines.js` draws foreground SVG roots at the viewport edges. Subtle light follows the roots as visitors scroll; there is no vine photograph or background texture. Motion controls, reduced-motion preferences, and open dialogs govern the effect. Read `DESIGN_NOTES.md` for implementation details.
+The portfolio presentation lives in `dist/pro.css`: a restrained dark studio interface with a concise hero, one filter row, consistent rectangular reel tiles, compact metadata, and a light studio section. The structure was informed by reviewing Motzify's works page, while the content, media, copy, and implementation remain Whisp's own. Decorative vines were removed so the work stays legible.
 
 Run `node --check dist/app.js`, `node --check dist/atmosphere.js`, `node --check dist/previews.js`, and `node scripts/verify-content.mjs` before publishing. Browser verification must include real video/preview playback, the WhatsApp draft destination, the email toggle, and both desktop and mobile widths.
 

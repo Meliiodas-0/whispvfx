@@ -8,7 +8,7 @@ Maintain WhispVFX's actual VFX renders and reels while retaining the existing im
 
 The artist approved publication of all 15 videos from their central VFX folder. Credit: **Whisp VFX studio**. They create VFX for Unreal Engine and Unity; every currently supplied video was rendered in Unreal Engine. Project titles are artist-approved descriptive names chosen from the visible effects and filenames. Do not invent clients, character/model credits, or additional production roles.
 
-The gallery contains playable reels with WebP posters and smaller thumbnails in `dist/assets/reels/`. The three concept illustrations remain labeled hero atmosphere backgrounds, not gallery work. Hero realm links map through `realmProjects` to actual reels. The artist wants organic portal shapes, charcoal shadows, and ember accents. They rejected the vine-image backdrop: `dist/vines.js` now draws transparent foreground SVG roots at the screen edges. Scroll position moves subtle glowing segments through the trunks and branches. The vines stay fixed to the viewport, cannot intercept input, respect the motion toggle/reduced motion, and hide while dialogs are open. No vine raster image is served. The full viewer retains complete original framing and native controls.
+The gallery contains playable reels with WebP posters and smaller thumbnails in `dist/assets/reels/`. The three concept illustrations remain labeled hero atmosphere backgrounds, not gallery work. Hero realm links map through `realmProjects` to actual reels. The artist subsequently requested a professional portfolio presentation inspired by the clear structure of Motzify's works page. `dist/pro.css` now provides a restrained dark studio interface with a single statement, consistent rectangular reel tiles, compact metadata, and a light studio section. Decorative vines and the earlier foreground SVG layer are removed. The full viewer retains uncropped rectangular source framing and native controls.
 
 All 15 pieces are visible on first load, with All work selected. There is no Selected-six filter, collection expansion button, or initially hidden project. Category filters narrow the collection; All work restores all 15. Filtering returns immediately to the gallery start. `projectOrder` includes all 15 for viewer navigation. The studio folio uses an explicitly labeled detail from Crimson Hand Magic, with a button to the original full-frame reel.
 
@@ -39,8 +39,7 @@ Read `AGENTS.md` and this guide. Ask the user for the folder containing the actu
 | `dist/app.js` | `projects` object: IDs, titles, categories, images, alt text, descriptions, and tags. `projectOrder` controls viewer navigation. |
 | `dist/index.html` | Gallery cards, filters/counts, hero realm choices, and project-dialog markup. `data-project` IDs must match the project object. |
 | `dist/immersive.css` | Hero realm backgrounds, swatches, atmosphere styling, and responsive video viewer. |
-| `dist/overgrowth.css` | Organic gallery portals, foreground-vine appearance, dark studio/contact composition, and mobile presentation. Overrides earlier base styles. |
-| `dist/vines.js` | Procedural foreground SVG vines and scroll-driven light. Preserves reduced-motion, motion-toggle, visibility, and dialog behavior. |
+| `dist/pro.css` | Professional portfolio presentation, consistent reel grid, light studio section, contact composition, footer, and mobile presentation. |
 | `dist/atmosphere.js` | Particles, motion controls, and optional ambient sound. Preserve this behavior during content changes. |
 | `dist/previews.js` | Lazy, silent card previews and their playback lifecycle. |
 | `dist/studio-config.js` | Real ArtStation URL, email, and digits-only WhatsApp number including country code. |

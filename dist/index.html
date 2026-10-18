@@ -10,10 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="immersive.css">
-  <link rel="stylesheet" href="overgrowth.css">
+  <link rel="stylesheet" href="pro.css">
 </head>
 <body>
-  <div id="foreground-vines" class="vine-overlay" aria-hidden="true"></div>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <a class="brand" href="#" aria-label="WhispVFX home"><span class="brand-mark" aria-hidden="true">W</span><span>Whisp<span class="brand-vfx">VFX</span></span></a>
@@ -27,9 +26,9 @@
       <canvas id="atmosphere-canvas" aria-hidden="true"></canvas><div class="hero-shade"></div>
       <span class="hero-side-note" aria-hidden="true">Real-time magic. Lasting impressions.</span>
       <div class="hero-content"><div class="hero-kicker">An independent Unreal &amp; Unity VFX studio</div>
-        <h1 id="hero-title"><span>Beyond the veil.</span><span>Something stirs.</span></h1>
-        <p>We breathe life into the things<br>that only exist in your imagination.</p>
-        <div class="hero-actions"><a class="button button-light" href="#work">Discover our worlds <span aria-hidden="true">✧</span></a></div>
+        <h1 id="hero-title"><span>VFX for worlds</span><span>that feel alive.</span></h1>
+        <p>Real-time effects for Unreal Engine and Unity, shaped with a cinematic eye.</p>
+        <div class="hero-actions"><a class="button button-light" href="#work">View the work <span aria-hidden="true">↘</span></a></div>
       </div>
       <div class="realm-console"><div class="realm-console-intro"><span class="console-star" aria-hidden="true">✧</span><p>A different kind of presence.<small>Choose a realm. Feel the shift.</small></p></div><div class="realm-switcher" role="group" aria-label="Choose an atmosphere"><button class="realm-choice active" type="button" data-realm="veil" aria-pressed="true"><span class="realm-swatch veil-swatch" aria-hidden="true"></span><span>The veil<small>Silver & silence</small></span></button><button class="realm-choice" type="button" data-realm="soul" aria-pressed="false"><span class="realm-swatch soul-swatch" aria-hidden="true"></span><span>The soul<small>Energy & wonder</small></span></button><button class="realm-choice" type="button" data-realm="crimson" aria-pressed="false"><span class="realm-swatch crimson-swatch" aria-hidden="true"></span><span>The ember<small>Fire & awakening</small></span></button></div><button class="realm-open" type="button" data-project="celestial-orbit">Watch a realm reel <span aria-hidden="true">✧</span></button></div>
       <div class="hero-bottom"><a href="#work" class="scroll-link"><span class="scroll-line" aria-hidden="true"></span>There’s more beneath the surface</a><div class="experience-controls"><button type="button" id="motion-toggle" aria-pressed="true"><span class="motion-icon" aria-hidden="true">◌</span><span data-motion-label>Motion on</span></button><button type="button" id="sound-toggle" aria-pressed="false"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span data-sound-label>Sound off</span></button></div></div>
@@ -38,7 +37,7 @@
     </section>
     <section class="work section" id="work" aria-labelledby="work-title">
       <div class="chapter-line"><span>01 / The collection</span><span>Whisp VFX studio · Unreal Engine</span></div>
-      <div class="collection-heading"><h2 id="work-title">Enter the <em>unseen.</em></h2><div class="collection-intro"><p>Spells. Elemental forces. Otherworldly presence.</p><p>15 original Unreal Engine renders.<br>Step into a portal. Watch the full reel.</p></div></div>
+      <div class="collection-heading"><h2 id="work-title">Work that <em>moves.</em></h2><div class="collection-intro"><p>Magic, elemental force, and atmosphere for real-time worlds.</p><p>15 original Unreal Engine renders.<br>Click a piece to watch the full reel.</p></div></div>
       <div id="gallery-top" class="gallery-anchor" aria-hidden="true"></div>
       <div class="work-toolbar">
         <div class="filters" role="group" aria-label="Filter projects">
@@ -235,7 +234,7 @@
     <section class="studio section" id="studio" aria-labelledby="studio-title">
       <div class="chapter-line"><span>02 / The craft</span><span>From a spark to a spectacle</span></div>
       <div class="studio-editorial">
-        <div class="studio-story"><h2 id="studio-title">Strange by nature.<br>Magic by <em>design.</em></h2><p class="studio-lead">The charge before release.<br>The shape of an impact.<br>The last trace of light.</p><p>Whisp VFX studio creates real-time visual effects for Unreal Engine and Unity. We shape magic around silhouette, rhythm, and the feeling it leaves behind.</p><div class="craft-tools"><span>Unreal Engine</span><span>Niagara</span><span>Unity</span></div></div>
+        <div class="studio-story"><h2 id="studio-title">Built for the<br><em>moment.</em></h2><p class="studio-lead">Clear silhouettes.<br>Precise timing.<br>A feeling that lasts.</p><p>Whisp VFX studio creates real-time visual effects for Unreal Engine and Unity. We focus on readable motion, strong art direction, and effects that belong to the world around them.</p><div class="craft-tools"><span>Unreal Engine</span><span>Niagara</span><span>Unity</span></div></div>
         <figure class="craft-artifact"><div class="artifact-image"><img src="assets/reels/crimson-hand-magic.webp" alt="A crimson energy orb hovering above a hand, from Crimson Hand Magic" loading="lazy" width="1280" height="720"><span class="artifact-label" aria-hidden="true">The anatomy of a spell</span><span class="artifact-cross cross-one" aria-hidden="true">+</span><span class="artifact-cross cross-two" aria-hidden="true">+</span></div><figcaption><div><span>Crimson Hand Magic</span><small>Detail from an Unreal Engine render</small></div><button type="button" data-project="crimson-hand-magic" class="artifact-open" aria-label="Watch Crimson Hand Magic from the studio section">Explore the effect <span aria-hidden="true">↗</span></button></figcaption></figure>
       </div>
       <div class="craft-index">
@@ -259,7 +258,6 @@
   <script src="studio-config.js"></script>
   <script src="app.js" defer></script>
   <script src="atmosphere.js" defer></script>
-  <script src="vines.js" defer></script>
   <script src="previews.js" defer></script>
 </body>
 </html>
